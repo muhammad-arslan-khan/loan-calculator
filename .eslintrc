@@ -8,6 +8,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
     "eslint-config-prettier"
   ],
   "globals": {

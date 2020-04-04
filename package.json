@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "loan-calculator",
   "private": true,
   "workspaces": [
     "packages/*"

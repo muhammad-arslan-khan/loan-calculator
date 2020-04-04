@@ -2,13 +2,14 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": [
+    "eslint:recommended",
     "plugin:react/recommended",
-    "airbnb",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended"
+    "eslint-config-prettier"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -18,7 +19,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2019,
     "sourceType": "module"
   },
   "plugins": ["react"],

@@ -3,6 +3,7 @@ import { fireEvent, waitFor } from '@testing-library/react'
 import axiosMock from 'axios'
 import { render } from '../utils/testUtils'
 import App from './App'
+import { SERVER_ERROR } from '../constants/errors'
 
 jest.mock('axios')
 
@@ -33,5 +34,22 @@ describe('<App />', () => {
       'Monthly Installment: 200 EUR',
     )
     expect(axiosMock.post).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display server error message', async () => {
+    axiosMock.post.mockResolvedValueOnce(new Error(SERVER_ERROR))
+
+    const { getByLabelText, getByTestId } = render(<App />)
+    const amount = getByLabelText(/amount/i)
+    const duration = getByLabelText(/duration/i)
+    const calculate = getByTestId(/calculate/i)
+
+    fireEvent.change(amount, { target: { value: '15000' } })
+    fireEvent.change(duration, { target: { value: '2' } })
+    await waitFor(() => {
+      fireEvent.click(calculate)
+    })
+
+    expect(getByTestId('alert')).toHaveTextContent(SERVER_ERROR)
   })
 })

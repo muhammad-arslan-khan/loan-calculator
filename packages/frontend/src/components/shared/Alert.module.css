@@ -1,0 +1,31 @@
+.message {
+  font-size: 20px;
+  padding: 20px;
+  color: white;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.danger {
+  background: red;
+}
+
+.warning {
+  background: orange;
+}
+
+.success {
+  background: green;
+}
+
+.cross {
+  float: right;
+  text-align: right !important;
+  border-radius: 100%;
+}
+
+.cross:hover {
+  cursor: pointer;
+}

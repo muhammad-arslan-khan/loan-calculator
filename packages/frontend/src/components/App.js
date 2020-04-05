@@ -2,15 +2,23 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import Card from './shared/Card'
 import LoanCalculator from './LoanCalculator/LoanCalculator'
-import { selectMonthlyInstallment } from './LoanCalculator/loanCalculatorSlice'
+import {
+  selectMonthlyInstallment,
+  selectServerErrorMonthlyInstallment,
+} from './LoanCalculator/loanCalculatorSlice'
+import Alert from './shared/Alert'
 import styles from './App.module.css'
 
 function App() {
   const monthlyInstallment = useSelector(selectMonthlyInstallment)
+  const serverErrorMonthlyInstallment = useSelector(
+    selectServerErrorMonthlyInstallment,
+  )
 
   return (
     <>
       <Card>
+        <Alert message={serverErrorMonthlyInstallment} />
         <LoanCalculator />
       </Card>
 

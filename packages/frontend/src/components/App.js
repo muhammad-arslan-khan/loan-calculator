@@ -24,7 +24,7 @@ function App() {
 
       <Card>
         {monthlyInstallment ? (
-          <p>
+          <p data-testid="monthly-installment">
             Monthly Installment: <strong>{monthlyInstallment} EUR</strong>
           </p>
         ) : (

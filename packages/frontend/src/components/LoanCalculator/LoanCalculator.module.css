@@ -30,6 +30,13 @@ button {
   border: 2px solid darkgreen;
 }
 
+button:disabled,
+button[disabled] {
+  border: 2px solid black;
+  background: lightgray;
+  color: rgb(149, 149, 149);
+}
+
 .mt20 {
   margin-top: 20px;
 }

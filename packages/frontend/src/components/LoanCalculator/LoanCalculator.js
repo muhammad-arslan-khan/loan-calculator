@@ -1,15 +1,16 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
-import { calculateLoanAsync } from './loanCalculatorSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectIsCalculating, calculateLoanAsync } from './loanCalculatorSlice'
 import styles from './LoanCalculator.module.css'
 
 const LoanCalculator = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, reset } = useForm()
+  const isCalculating = useSelector(selectIsCalculating)
   const dispatch = useDispatch()
 
   const onSubmit = data => {
-    dispatch(calculateLoanAsync(data))
+    dispatch(calculateLoanAsync(data, reset))
   }
 
   return (
@@ -36,7 +37,9 @@ const LoanCalculator = () => {
       />
       <pre>Some error</pre>
 
-      <button type="submit">Calculate</button>
+      <button type="submit" disabled={isCalculating}>
+        {isCalculating ? 'Calculating...' : 'Calculate'}
+      </button>
     </form>
   )
 }

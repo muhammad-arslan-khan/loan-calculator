@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import Card from './shared/Card'
 import LoanCalculator from './LoanCalculator/LoanCalculator'
 import { selectMonthlyInstallment } from './LoanCalculator/loanCalculatorSlice'
-
 import styles from './App.module.css'
 
 function App() {

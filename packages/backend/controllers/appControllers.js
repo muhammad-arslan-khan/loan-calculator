@@ -1,11 +1,12 @@
 const calculateLoan = async (req, res) => {
-  console.log('backend', req.body)
+  const response = {
+    amount: Number(req.body.amount),
+    duration: Number(req.body.duration),
+    monthlyInstallment: Math.floor(Math.random() * 2000),
+  }
 
   setTimeout(() => {
-    res.json([
-      { id: 1, name: 'John Doe' },
-      { id: 2, name: 'Billy' },
-    ])
+    res.json(response)
   }, 1000)
 }
 

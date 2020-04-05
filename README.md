@@ -17,7 +17,10 @@ A simple loan calculator app
 - git clone https://github.com/muhammad-arslan-khan/loan-calculator.git
 - cd `loan-calculator`
 - `npx lerna bootstrap`
-- cd packages/frontend
+- `cd packages/backend`
+- `yarn start`
+- open a new terminal window
+- `cd packages/frontend`
 - `yarn start`
 
 3. Then open [http://localhost:3000](http://localhost:3000) to view it in the browser. "**Hallelujah**".

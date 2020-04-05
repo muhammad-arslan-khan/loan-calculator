@@ -18,7 +18,10 @@ const getClassName = (variant, styles) => {
 const Alert = ({ variant, message }) => {
   if (message) {
     return (
-      <p className={`${styles.message} ${getClassName(variant, styles)}`}>
+      <p
+        className={`${styles.message} ${getClassName(variant, styles)}`}
+        data-testid="alert"
+      >
         {message}
       </p>
     )

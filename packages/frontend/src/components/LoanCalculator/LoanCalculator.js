@@ -20,16 +20,17 @@ const LoanCalculator = () => {
         id="amount"
         name="amount"
         type="number"
+        placeholder="Enter amount..."
         className={styles.input}
         ref={register({
           required: REQUIRED,
           min: {
             value: 10000,
-            message: 'Minimum loan value is 10000',
+            message: 'Minimum loan amount is 10000',
           },
           max: {
             value: 100000,
-            message: 'Maximum loan value is 100000',
+            message: 'Maximum loan amount is 100000',
           },
         })}
       />
@@ -42,6 +43,7 @@ const LoanCalculator = () => {
         id="duration"
         name="duration"
         type="number"
+        placeholder="Enter duration..."
         className={styles.input}
         ref={register({
           required: REQUIRED,
@@ -57,7 +59,7 @@ const LoanCalculator = () => {
       />
       {errors.duration && <pre>{errors.duration.message}</pre>}
 
-      <button type="submit" disabled={isCalculating}>
+      <button type="submit" disabled={isCalculating} data-testid="calculate">
         {isCalculating ? 'Calculating...' : 'Calculate'}
       </button>
     </form>

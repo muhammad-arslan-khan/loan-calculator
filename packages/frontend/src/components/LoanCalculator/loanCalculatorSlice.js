@@ -2,34 +2,35 @@ import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export const slice = createSlice({
-  name: 'loanCalculator',
+  name: 'monthlyInstallment',
   initialState: {
-    value: 0,
+    monthlyInstallment: null,
     isFetching: false,
   },
   reducers: {
     setIsFetching: state => {
       state.isFetching = true
     },
-    calculate: (state, action) => {
-      state.value += action.payload
+    setMonthlyInstallment: (state, action) => {
+      state.monthlyInstallment = action.payload
       state.isFetching = false
     },
   },
 })
 
-export const { calculate } = slice.actions
+export const { setMonthlyInstallment } = slice.actions
 
 export const calculateLoanAsync = data => async dispatch => {
   try {
     const res = await axios.post('/api/calculate', data)
     console.log('res', res.data)
-    dispatch(calculate(100))
+    dispatch(setMonthlyInstallment(100))
   } catch (err) {
     console.log(err)
   }
 }
 
-export const selectCount = state => state.loanCalculator
+export const selectMonthlyInstallment = state =>
+  state.monthlyInstallment.monthlyInstallment
 
 export default slice.reducer

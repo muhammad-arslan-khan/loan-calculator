@@ -2,10 +2,11 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectIsCalculating, calculateLoanAsync } from './loanCalculatorSlice'
+import { REQUIRED } from '../../constants/errors'
 import styles from './LoanCalculator.module.css'
 
 const LoanCalculator = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, errors } = useForm()
   const isCalculating = useSelector(selectIsCalculating)
   const dispatch = useDispatch()
 
@@ -21,9 +22,19 @@ const LoanCalculator = () => {
         name="amount"
         type="number"
         className={styles.input}
-        ref={register({ required: true, min: 10000, max: 100000 })}
+        ref={register({
+          required: REQUIRED,
+          min: {
+            value: 10000,
+            message: 'Minimum loan value is 10000',
+          },
+          max: {
+            value: 100000,
+            message: 'Maximum loan value is 100000',
+          },
+        })}
       />
-      <pre>Some error</pre>
+      {errors.amount && <pre>{errors.amount.message}</pre>}
 
       <label htmlFor="duration" className={styles.mt20}>
         Duration
@@ -33,9 +44,19 @@ const LoanCalculator = () => {
         name="duration"
         type="number"
         className={styles.input}
-        ref={register({ required: true, min: 1, max: 5 })}
+        ref={register({
+          required: REQUIRED,
+          min: {
+            value: 1,
+            message: 'Minimum duration is 1 year',
+          },
+          max: {
+            value: 5,
+            message: 'Maximum duration is 5 years',
+          },
+        })}
       />
-      <pre>Some error</pre>
+      {errors.duration && <pre>{errors.duration.message}</pre>}
 
       <button type="submit" disabled={isCalculating}>
         {isCalculating ? 'Calculating...' : 'Calculate'}

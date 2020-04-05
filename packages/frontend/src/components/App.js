@@ -28,7 +28,7 @@ function App() {
             Monthly Installment: <strong>{monthlyInstallment} EUR</strong>
           </p>
         ) : (
-          <p className={styles.lightGrey}>
+          <p className={styles.lightGrey} data-testid="default-message">
             Please set <strong>Amount</strong> and <strong>Duration</strong> and
             click <strong>Calculate</strong> 👆🏼
           </p>

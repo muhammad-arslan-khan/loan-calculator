@@ -1,13 +1,8 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { render as rtlRender, fireEvent, waitFor } from '@testing-library/react'
-import store from '../../store/store'
+import { fireEvent, waitFor } from '@testing-library/react'
+import { render } from '../../utils/testUtils'
 import LoanCalculator from './LoanCalculator'
 import { REQUIRED } from '../../constants/errors'
-
-function render(ui, options) {
-  return rtlRender(<Provider store={store}>{ui}</Provider>, options)
-}
 
 describe('<LoanCalculator />', () => {
   it('should check that amount & duration fields exist', () => {

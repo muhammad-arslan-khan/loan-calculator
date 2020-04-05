@@ -6,10 +6,9 @@ import { REQUIRED } from '../../constants/errors'
 import styles from './LoanCalculator.module.css'
 
 const LoanCalculator = () => {
-  const { register, handleSubmit, errors } = useForm()
-  const isCalculating = useSelector(selectIsCalculating)
   const dispatch = useDispatch()
-
+  const isCalculating = useSelector(selectIsCalculating)
+  const { register, handleSubmit, errors } = useForm()
   const onSubmit = data => {
     dispatch(calculateLoanAsync(data))
   }

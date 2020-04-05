@@ -4,7 +4,7 @@ const calculateLoan = async (req, res) => {
   const response = {
     amount: Number(req.body.amount),
     duration: Number(req.body.duration),
-    monthlyInstallment: Math.ceil((amount / (duration + 12)) * 1.9),
+    monthlyInstallment: ((amount / (duration * 12)) * 0.9).toFixed(2),
   }
 
   setTimeout(() => {

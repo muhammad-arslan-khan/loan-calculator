@@ -5,12 +5,12 @@ import { selectIsCalculating, calculateLoanAsync } from './loanCalculatorSlice'
 import styles from './LoanCalculator.module.css'
 
 const LoanCalculator = () => {
-  const { register, handleSubmit, reset } = useForm()
+  const { register, handleSubmit } = useForm()
   const isCalculating = useSelector(selectIsCalculating)
   const dispatch = useDispatch()
 
   const onSubmit = data => {
-    dispatch(calculateLoanAsync(data, reset))
+    dispatch(calculateLoanAsync(data))
   }
 
   return (

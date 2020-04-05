@@ -19,14 +19,12 @@ export const slice = createSlice({
 
 export const { setIsCalculating, setMonthlyInstallment } = slice.actions
 
-export const calculateLoanAsync = (data, reset) => async dispatch => {
+export const calculateLoanAsync = data => async dispatch => {
   dispatch(setIsCalculating(true))
 
   try {
     const res = await axios.post('/api/calculate', data)
-    console.log('res', res.data)
-    dispatch(setMonthlyInstallment(100))
-    reset()
+    dispatch(setMonthlyInstallment(res.data.monthlyInstallment))
   } catch (err) {
     console.log(err)
   } finally {
